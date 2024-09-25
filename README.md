@@ -20,6 +20,9 @@
       <b> jetson nano image
       ![jetson-nano-dev-kit-top-r6-HR-B01](https://github.com/user-attachments/assets/ffeb103f-83a2-465f-9dff-be61cfbeee92)
 
+      ![image](https://github.com/user-attachments/assets/c137645c-cbc5-47ca-beec-dd12d47f93e4)
+
+
 
 welcome 부터 따라하기 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@aba5104413ae454c8c63a6f301925337
 
