@@ -35,7 +35,16 @@ https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
    4-1. sd card formatter ---> download
    4-2. balenaetcher download --->  이미지 굽기
    4-3. 제슨나노에 sd넣고 우분투 설치
-5. 제슨 알아보고 설치하기
+
+   ![image](https://github.com/user-attachments/assets/4a6a2209-7f2a-4b96-992f-febb62edc83b)
+   ![image](https://github.com/user-attachments/assets/6c8ced22-0680-4cc3-be48-e676507efee2)
+   ![image](https://github.com/user-attachments/assets/50b52c40-1df0-4c98-996d-27cb6da4ee31)
+   ![image](https://github.com/user-attachments/assets/2d3a9737-25b4-4eea-ae04-167654a06b48)
+
+
+
+
+6. 제슨 알아보고 설치하기
 
 https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide#id-.JetsonNano2GBDeveloperKitUserGuidevbatuu_v1.0-DeveloperKitSetup
 
