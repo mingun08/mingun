@@ -49,6 +49,8 @@ https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
 https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide#id-.JetsonNano2GBDeveloperKitUserGuidevbatuu_v1.0-DeveloperKitSetup
 
 6. image classification - Thumbs Project using ResNet
+ ![ai-ml-dl](https://github.com/user-attachments/assets/6683c15e-a056-485c-ab58-293fca84957e)
+
 
 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@aabe204272214ba69309581d388b0734
 
