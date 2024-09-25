@@ -16,6 +16,9 @@
   
         - 그외 쿨링펜, lcd, 또는 모니터. hdmi
    2. jetson nano에 대하여
+      <b> jetson nano image
+      ![jetson-nano-dev-kit-top-r6-HR-B01](https://github.com/user-attachments/assets/ffeb103f-83a2-465f-9dff-be61cfbeee92)
+
 
 welcome 부터 따라하기 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@aba5104413ae454c8c63a6f301925337
 
@@ -40,4 +43,3 @@ https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=
 
 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@76a2873eb69946b4928c4f8432e04314
 
-![jetson-nano-dev-kit-top-r6-HR-B01](https://github.com/user-attachments/assets/ffeb103f-83a2-465f-9dff-be61cfbeee92)
