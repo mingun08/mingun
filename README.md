@@ -87,7 +87,8 @@ nvgstcapture-1.0 --mode=1 --camsrc=0 --cap-dev-node=0
 j 
 ```
 <b>  결과 사진
-!https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view?usp=sharing
+
+![image](https://github.com/user-attachments/assets/2133d9c0-4157-41d8-b4e5-b6114f5ac89e)
 
 ```
 nvgstcapture-1.0 --mode=2 --camsrc=0 --cap-dev-node=0
