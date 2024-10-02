@@ -135,6 +135,7 @@ nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
 
 결과에 다음과 같은 글이 써진다. allow 10 sec for JupyterLab to start @ http://192.168.0.152:8888 (password dlinano) JupterLab logging location: /var/log/jupyter.log (inside the container) root@dli-desktop:/nvdli-nano# 웹브라우저를 열고 192.168.0.152:8888 를 친다
 결과
+
 ![372469166-645f81ca-8fb1-49b9-ae38-d118c5e07eb3](https://github.com/user-attachments/assets/70043bad-90da-4c0d-9766-58f4f63d5d77)
 http://192.168.0.152:8888/lab/tree/classification/classification_interactive.ipynb
 
