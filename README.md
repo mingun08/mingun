@@ -84,8 +84,8 @@ python3  face-detect-usb.py
 
 nvgstcapture-1.0 --mode=1 --camsrc=0 --cap-dev-node=0
 
-j
-[https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view?usp=sharing](https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view)
+j [https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view?usp=sharing](https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view)
+
 
 nvgstcapture-1.0 --mode=2 --camsrc=0 --cap-dev-node=0
 1
