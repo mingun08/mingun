@@ -46,6 +46,7 @@ https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
 
 
 5. 쿨링팬 설치(0~255)와 jtop
+
 쿨링팬
 ```
 sudo sh -c 'echo 128 > /sys/devices/pwm-fan/target_pwm'
@@ -54,6 +55,7 @@ sudo sh -c 'echo 128 > /sys/devices/pwm-fan/target_pwm'
   
 jtop : system monitoring tool
 terminal을 열어줍니다.
+```
 dli@dli-desktop:~$ sudo apt install python3-pip
 
        컴퓨터가 물어본다   do you want to continue ? Y
@@ -66,7 +68,8 @@ dli@dli-desktop:~$  sudo -H pip3 install -U jetson-stats
 jetson-stats-4.2.3 가 써진 걸 확인. 
 
       dli@dli-desktop:~$ jtop
-
+```
+<b>
 온도체크 해 본다.
 온도가 무척 높다. 
 쿨링팬 설치
@@ -76,6 +79,7 @@ jetson-stats-4.2.3 가 써진 걸 확인.
 6. usb-camera 얼굴의 코 눈 인식하는 것도 해봄, 이미지 캡쳐와 영상 녹화 cctv기능 구현 j는 이미지 캡쳐, 1은 영상 녹화 시작 0은 영상녹화 스톱(mode1=사진 mode2=영상)
 
 git clone https://github.com/jetsonhacks/USB-Camera.git
+
 ```
 cd USB-Camera
 
@@ -132,7 +136,7 @@ dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 --volume /tmp/argus_socket:/tmp/argus_socket \
 --device /dev/video0 \
 nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
-
+```
 결과에 다음과 같은 글이 써진다. allow 10 sec for JupyterLab to start @ http://192.168.0.152:8888 (password dlinano) JupterLab logging location: /var/log/jupyter.log (inside the container) root@dli-desktop:/nvdli-nano# 웹브라우저를 열고 192.168.0.152:8888 를 친다
 
 결과
@@ -154,17 +158,19 @@ echo "/mnt/10GB.swap swap swap defaults 0 0" >> /etc/fstab
 exit
 
 sudo reboot
+```
 
-시스템을 GUI 모드로 설정:
+<b>시스템을 GUI 모드로 설정:
 ```
 sudo systemctl set-default graphical.target
 reboot
-
-Camera 먼저 카메라를 생성하고 running으로 설정합니다. 사용 중인 카메라 유형(USB 또는 CSI)에 따라 적절한 카메라 선택 라인을 주석 해제합니다. 이 셀을 실행하는 데 몇 초가 걸릴 수 있습니다. jupyterlab에서 실행
+```
+<b> Camera 먼저 카메라를 생성하고 running으로 설정합니다. 사용 중인 카메라 유형(USB 또는 CSI)에 따라 적절한 카메라 선택 라인을 주석 해제합니다. 이 셀을 실행하는 데 몇 초가 걸릴 수 있습니다. jupyterlab에서 실행
 
 10. image classification - Thumbs Project using ResNet
-```
+
 #### Check device number
+```
 !ls -ltrh /dev/video*
 ```
 from jetcam.usb_camera import USBCamera
