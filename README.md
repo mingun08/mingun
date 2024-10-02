@@ -73,7 +73,7 @@ terminal을 열어줍니다.
 6. usb-camera 얼굴의 코 눈 인식하는 것도 해봄, 이미지 캡쳐와 영상 녹화 cctv기능 구현 j는 이미지 캡쳐, 1은 영상 녹화 시작 0은 영상녹화 스톱(mode1=사진 mode2=영상)
 
 git clone https://github.com/jetsonhacks/USB-Camera.git
-````
+```
 cd USB-Camera
 
 ls
@@ -86,17 +86,20 @@ nvgstcapture-1.0 --mode=1 --camsrc=0 --cap-dev-node=0
 
 j 
 ```
+<b>  결과 사진
 ![https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view?usp=sharing](https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view)
 
+```
 nvgstcapture-1.0 --mode=2 --camsrc=0 --cap-dev-node=0
-1
-0
-````
+```
+<b> 1을 치면 동영상 녹화 시작 
+0은 녹화 종료
+
 이곳에 사진 넣고 영상 넣을 것 참고 링크 https://ndb796.tistory.com/557
 7. 한글 설치 , reboot 한 후 오른쪽 하단 키보드 모양을 오른쪽 마우스 클릭→ configure click
-````
+```
 참고 링크 https://driz2le.tistory.com/253
-````
+```
 sudo apt-get update
 sudo apt-get install fcitx-hangul
 reboot
@@ -105,7 +108,7 @@ reboot
 https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide#id-.JetsonNano2GBDeveloperKitUserGuidevbatuu_v1.0-DeveloperKitSetup
 
 9. image classification 준비
-````
+```
 dli@dli-desktop:~$ mkdir -p ~/nvdli-data
 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 >     --memory=500M --memory-swap=4G \
@@ -117,7 +120,7 @@ dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
  결과
  ![372466618-634eaeeb-1a8f-4bff-a953-55663eef1c7e](https://github.com/user-attachments/assets/b030b812-7c38-4487-a97e-d49beac2b3ce)
  카메라 없어서 생기는 에러로 카메라 연결하고 다시 명령한다 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
-````
+```
 --memory=500M --memory-swap=4G \
 --volume ~/nvdli-data:/nvdli-nano/data \
 --volume /tmp/argus_socket:/tmp/argus_socket \
@@ -130,7 +133,7 @@ nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
 http://192.168.0.152:8888/lab/tree/classification/classification_interactive.ipynb
 
 swap메모리가 적으면 thumup 프로젝트 할 때 동영상이 나오지 않고 사진으로 되어 데이터 수집을 할 수 없다. 그래서 미리 스왑을 해준다
-````
+```
 sudo systemctl disable nvzramconfig
 
 sudo systemctl set-default multi-user.target
@@ -146,17 +149,17 @@ exit
 sudo reboot
 
 시스템을 GUI 모드로 설정:
-````
+```
 sudo systemctl set-default graphical.target
 reboot
 
 Camera 먼저 카메라를 생성하고 running으로 설정합니다. 사용 중인 카메라 유형(USB 또는 CSI)에 따라 적절한 카메라 선택 라인을 주석 해제합니다. 이 셀을 실행하는 데 몇 초가 걸릴 수 있습니다. jupyterlab에서 실행
 
 10. image classification - Thumbs Project using ResNet
-````
+```
 # Check device number
 !ls -ltrh /dev/video*
-````
+```
 from jetcam.usb_camera import USBCamera
 from jetcam.csi_camera import CSICamera
 
@@ -172,7 +175,7 @@ print("camera created")
 Task 그런 다음 프로젝트 작업 TASK과 수집할 데이터 범주 CATEGORIES를 정의합니다. 선택한 이름으로 여러 데이터세트 DATASETS에 대한 공간을 정의할 수도 있습니다.
 
 작성 중인 분류 작업에 대해 연결된 줄을 주석 해제/수정하고 실행합니다. 이 셀을 실행하는 데 몇 초밖에 걸리지 않습니다
-````
+```
 import torchvision.transforms as transforms
 from dataset import ImageClassificationDataset
 
@@ -201,13 +204,13 @@ for name in DATASETS:
     datasets[name] = ImageClassificationDataset('../data/classification/' + TASK + '_' + name, CATEGORIES, TRANSFORMS)
     
 print("{} task with {} categories defined".format(TASK, CATEGORIES))
-````
+```
 # Set up the data directory location if not there already
 DATA_DIR = '/nvdli-nano/data/classification/'
 !mkdir -p {DATA_DIR}
 
 Data Collection 아래 셀을 실행하여 데이터 수집 도구 위젯을 만든다
-````
+```
 import ipywidgets
 import traitlets
 from IPython.display import display
@@ -258,7 +261,7 @@ data_collection_widget = ipywidgets.VBox([
 print("data_collection_widget created")
 
 Model 다음 셀을 실행하여 뉴럴 네트워크를 정의하고 프로젝트에 필요한 출력과 일치하도록 완전히 연결된 레이어(fc)를 조정합니다
-````
+```
 import torch
 import torchvision
 
@@ -305,7 +308,7 @@ model_widget = ipywidgets.VBox([
 print("model configured and model_widget created")
 
 Live Execution 아래 셀을 실행하여 실시간 실행 위젯을 설정
-`````
+```
 import threading
 import time
 from utils import preprocess
@@ -347,7 +350,7 @@ live_execution_widget = ipywidgets.VBox([
 print("live_execution_widget created")
 
 Training and Evaluation¶ 다음 셀을 실행하여 트레이너를 정의하고 위젯을 실행하여 트레이너를 제어합니다
-````
+```
 BATCH_SIZE = 8
 
 optimizer = torch.optim.Adam(model.parameters())
@@ -441,7 +444,7 @@ train_eval_widget = ipywidgets.VBox([
 print("trainer configured and train_eval_widget created")
 
 Display the Interactive Tool!
-````
+```
 # Combine all the widgets into one display
 all_widget = ipywidgets.VBox([
     ipywidgets.HBox([data_collection_widget, live_execution_widget]), 
@@ -454,7 +457,7 @@ display(all_widget)
 Before you go...
 
 카메라 및/또는 노트북 커널을 종료하여 카메라 리소스를 해제합니다.
-````
+```
 # Attention!  Execute this cell before moving to another notebook
 # The USB camera application only requires that the notebook be reset
 # The CSI camera application requires that the 'camera' object be specifically released
