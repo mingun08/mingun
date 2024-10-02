@@ -467,6 +467,9 @@ if type(camera) is CSICamera:
 
 os._exit(00)
 
+
+
+
 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@aabe204272214ba69309581d388b0734
 11. image regression - Face XY Project
 
