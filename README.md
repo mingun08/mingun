@@ -59,7 +59,17 @@ https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=
 5. image regression - Face XY Project
 
 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@76a2873eb69946b4928c4f8432e04314
-6. usb-camera 얼굴의 코 눈 인식하는 것도 해봄, 이미지 캡쳐와 영상 녹화 cctv기능 구현 j는 이미지 캡쳐, 1은 영상 녹화 시작 0은 영상녹화 스톱
+5. 쿨링팬 설치(0~255)와 jtop
+쿨링팬
+```
+sudo sh -c 'echo 128 > /sys/devices/pwm-fan/target_pwm'
+```
+<b> jtop
+jtop : system monitoring tool
+terminal을 열어줍니다.
+
+
+6. usb-camera 얼굴의 코 눈 인식하는 것도 해봄, 이미지 캡쳐와 영상 녹화 cctv기능 구현 j는 이미지 캡쳐, 1은 영상 녹화 시작 0은 영상녹화 스톱(mode1=사진 mode2=영상)
 
 git clone https://github.com/jetsonhacks/USB-Camera.git
 cd USB-Camera
@@ -68,6 +78,7 @@ python3 usb-camera-gst.py
 python3  face-detect-usb.py
 nvgstcapture-1.0 --mode=1 --camsrc=0 --cap-dev-node=0
 j
+https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view?usp=sharing
 nvgstcapture-1.0 --mode=2 --camsrc=0 --cap-dev-node=0
 1
 0
@@ -91,11 +102,9 @@ dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 >     --volume /tmp/argus_socket:/tmp/argus_socket \
 >     --device /dev/video0 \
 >     nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
-결과
-
-image
-
-카메라 없어서 생기는 에러로 카메라 연결하고 다시 명령한다 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
+> 결과
+> ![372466618-634eaeeb-1a8f-4bff-a953-55663eef1c7e](https://github.com/user-attachments/assets/b030b812-7c38-4487-a97e-d49beac2b3ce)
+> 카메라 없어서 생기는 에러로 카메라 연결하고 다시 명령한다 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 
 --memory=500M --memory-swap=4G \
 --volume ~/nvdli-data:/nvdli-nano/data \
@@ -103,11 +112,8 @@ image
 --device /dev/video0 \
 nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
 결과에 다음과 같은 글이 써진다. allow 10 sec for JupyterLab to start @ http://192.168.0.152:8888 (password dlinano) JupterLab logging location: /var/log/jupyter.log (inside the container) root@dli-desktop:/nvdli-nano# 웹브라우저를 열고 192.168.0.152:8888 를 친다
-
 결과
-
-image image
-
+![372469166-645f81ca-8fb1-49b9-ae38-d118c5e07eb3](https://github.com/user-attachments/assets/70043bad-90da-4c0d-9766-58f4f63d5d77)
 http://192.168.0.152:8888/lab/tree/classification/classification_interactive.ipynb
 
 swap메모리가 적으면 thumup 프로젝트 할 때 동영상이 나오지 않고 사진으로 되어 데이터 수집을 할 수 없다. 그래서 미리 스왑을 해준다
@@ -443,4 +449,3 @@ https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=
 11. image regression - Face XY Project
 
 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@76a2873eb69946b4928c4f8432e04314
-
