@@ -123,7 +123,7 @@ dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 >     nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
 ````
  결과
- 
+ <b>
  ![372466618-634eaeeb-1a8f-4bff-a953-55663eef1c7e](https://github.com/user-attachments/assets/b030b812-7c38-4487-a97e-d49beac2b3ce)
  카메라 없어서 생기는 에러로 카메라 연결하고 다시 명령한다 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 ```
@@ -134,10 +134,10 @@ dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
 
 결과에 다음과 같은 글이 써진다. allow 10 sec for JupyterLab to start @ http://192.168.0.152:8888 (password dlinano) JupterLab logging location: /var/log/jupyter.log (inside the container) root@dli-desktop:/nvdli-nano# 웹브라우저를 열고 192.168.0.152:8888 를 친다
-결과
 
-![372469166-645f81ca-8fb1-49b9-ae38-d118c5e07eb3](https://github.com/user-attachments/assets/70043bad-90da-4c0d-9766-58f4f63d5d77)
-http://192.168.0.152:8888/lab/tree/classification/classification_interactive.ipynb
+결과
+<b>
+![372469166-645f81ca-8fb1-49b9-ae38-d118c5e07eb3](https://github.com/user-attachments/assets/1c0ccf4f-e8eb-4197-88e3-57e050b4904c)
 
 swap메모리가 적으면 thumup 프로젝트 할 때 동영상이 나오지 않고 사진으로 되어 데이터 수집을 할 수 없다. 그래서 미리 스왑을 해준다
 ```
