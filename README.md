@@ -51,8 +51,26 @@ https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
 sudo sh -c 'echo 128 > /sys/devices/pwm-fan/target_pwm'
 ```
 <b> jtop
+  
 jtop : system monitoring tool
 terminal을 열어줍니다.
+dli@dli-desktop:~$ sudo apt install python3-pip
+
+       컴퓨터가 물어본다   do you want to continue ? Y
+
+dli@dli-desktop:~$  sudo -H pip3 install -U jetson-stats
+
+
+만약 에러가 나오면 sudo apt-get upgrade, 
+                                sudo apt-get update해준다.
+jetson-stats-4.2.3 가 써진 걸 확인. 
+
+      dli@dli-desktop:~$ jtop
+
+온도체크 해 본다.
+온도가 무척 높다. 
+쿨링팬 설치
+
 
 
 6. usb-camera 얼굴의 코 눈 인식하는 것도 해봄, 이미지 캡쳐와 영상 녹화 cctv기능 구현 j는 이미지 캡쳐, 1은 영상 녹화 시작 0은 영상녹화 스톱(mode1=사진 mode2=영상)
