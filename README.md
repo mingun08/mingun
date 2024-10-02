@@ -59,6 +59,7 @@ https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=
 5. image regression - Face XY Project
 
 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-RX-02+V2&unit=block-v1:DLI+S-RX-02+V2+type@vertical+block@76a2873eb69946b4928c4f8432e04314
+
 5. 쿨링팬 설치(0~255)와 jtop
 쿨링팬
 ```
