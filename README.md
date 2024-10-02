@@ -161,17 +161,17 @@ Camera 먼저 카메라를 생성하고 running으로 설정합니다. 사용 �
 
 10. image classification - Thumbs Project using ResNet
 ```
-# Check device number
+#### Check device number
 !ls -ltrh /dev/video*
 ```
 from jetcam.usb_camera import USBCamera
 from jetcam.csi_camera import CSICamera
 
-# for USB Camera (Logitech C270 webcam), uncomment the following line
+##### for USB Camera (Logitech C270 webcam), uncomment the following line
 camera = USBCamera(width=224, height=224, capture_device=0) # confirm the capture_device number
 
-# for CSI Camera (Raspberry Pi Camera Module V2), uncomment the following line
-# camera = CSICamera(width=224, height=224, capture_device=0) # confirm the capture_device number
+##### for CSI Camera (Raspberry Pi Camera Module V2), uncomment the following line
+##### camera = CSICamera(width=224, height=224, capture_device=0) # confirm the capture_device number
 
 camera.running = True
 print("camera created")
@@ -184,17 +184,17 @@ import torchvision.transforms as transforms
 from dataset import ImageClassificationDataset
 
 TASK = 'thumbs'
-# TASK = 'emotions'
-# TASK = 'fingers'
-# TASK = 'diy'
+##### TASK = 'emotions'
+##### TASK = 'fingers'
+##### TASK = 'diy'
 
 CATEGORIES = ['thumbs_up', 'thumbs_down']
-# CATEGORIES = ['none', 'happy', 'sad', 'angry']
-# CATEGORIES = ['1', '2', '3', '4', '5']
-# CATEGORIES = [ 'diy_1', 'diy_2', 'diy_3']
+##### CATEGORIES = ['none', 'happy', 'sad', 'angry']
+##### CATEGORIES = ['1', '2', '3', '4', '5']
+##### CATEGORIES = [ 'diy_1', 'diy_2', 'diy_3']
 
 DATASETS = ['A', 'B']
-# DATASETS = ['A', 'B', 'C']
+##### DATASETS = ['A', 'B', 'C']
 
 TRANSFORMS = transforms.Compose([
     transforms.ColorJitter(0.2, 0.2, 0.2, 0.2),
@@ -209,7 +209,7 @@ for name in DATASETS:
     
 print("{} task with {} categories defined".format(TASK, CATEGORIES))
 ```
-# Set up the data directory location if not there already
+##### Set up the data directory location if not there already
 DATA_DIR = '/nvdli-nano/data/classification/'
 !mkdir -p {DATA_DIR}
 
@@ -220,38 +220,38 @@ import traitlets
 from IPython.display import display
 from jetcam.utils import bgr8_to_jpeg
 
-# initialize active dataset
+##### initialize active dataset
 dataset = datasets[DATASETS[0]]
 
-# unobserve all callbacks from camera in case we are running this cell for second time
+##### unobserve all callbacks from camera in case we are running this cell for second time
 camera.unobserve_all()
 
-# create image preview
+##### create image preview
 camera_widget = ipywidgets.Image()
 traitlets.dlink((camera, 'value'), (camera_widget, 'value'), transform=bgr8_to_jpeg)
 
-# create widgets
+##### create widgets
 dataset_widget = ipywidgets.Dropdown(options=DATASETS, description='dataset')
 category_widget = ipywidgets.Dropdown(options=dataset.categories, description='category')
 count_widget = ipywidgets.IntText(description='count')
 save_widget = ipywidgets.Button(description='add')
 
-# manually update counts at initialization
+##### manually update counts at initialization
 count_widget.value = dataset.get_count(category_widget.value)
 
-# sets the active dataset
+##### sets the active dataset
 def set_dataset(change):
     global dataset
     dataset = datasets[change['new']]
     count_widget.value = dataset.get_count(category_widget.value)
 dataset_widget.observe(set_dataset, names='value')
 
-# update counts when we select a new category
+##### update counts when we select a new category
 def update_counts(change):
     count_widget.value = dataset.get_count(change['new'])
 category_widget.observe(update_counts, names='value')
 
-# save image for category and update counts
+##### save image for category and update counts
 def save(c):
     dataset.save_entry(camera.value, category_widget.value)
     count_widget.value = dataset.get_count(category_widget.value)
@@ -261,7 +261,7 @@ data_collection_widget = ipywidgets.VBox([
     ipywidgets.HBox([camera_widget]), dataset_widget, category_widget, count_widget, save_widget
 ])
 
-# display(data_collection_widget)
+##### display(data_collection_widget)
 print("data_collection_widget created")
 
 Model 다음 셀을 실행하여 뉴럴 네트워크를 정의하고 프로젝트에 필요한 출력과 일치하도록 완전히 연결된 레이어(fc)를 조정합니다
@@ -272,22 +272,22 @@ import torchvision
 
 device = torch.device('cuda')
 
-# ALEXNET
-# model = torchvision.models.alexnet(pretrained=True)
-# model.classifier[-1] = torch.nn.Linear(4096, len(dataset.categories))
+##### ALEXNET
+##### model = torchvision.models.alexnet(pretrained=True)
+##### model.classifier[-1] = torch.nn.Linear(4096, len(dataset.categories))
 
-# SQUEEZENET 
-# model = torchvision.models.squeezenet1_1(pretrained=True)
-# model.classifier[1] = torch.nn.Conv2d(512, len(dataset.categories), kernel_size=1)
-# model.num_classes = len(dataset.categories)
+##### SQUEEZENET 
+##### model = torchvision.models.squeezenet1_1(pretrained=True)
+##### model.classifier[1] = torch.nn.Conv2d(512, len(dataset.categories), kernel_size=1)
+##### model.num_classes = len(dataset.categories)
 
-# RESNET 18
+##### RESNET 18
 model = torchvision.models.resnet18(pretrained=True)
 model.fc = torch.nn.Linear(512, len(dataset.categories))
 
-# RESNET 34
-# model = torchvision.models.resnet34(pretrained=True)
-# model.fc = torch.nn.Linear(512, len(dataset.categories))
+##### RESNET 34
+##### model = torchvision.models.resnet34(pretrained=True)
+##### model.fc = torch.nn.Linear(512, len(dataset.categories))
     
 model = model.to(device)
 
@@ -308,7 +308,7 @@ model_widget = ipywidgets.VBox([
     ipywidgets.HBox([model_load_button, model_save_button])
 ])
 
-# display(model_widget)
+##### display(model_widget)
 print("model configured and model_widget created")
 
 Live Execution 아래 셀을 실행하여 실시간 실행 위젯을 설정
@@ -350,7 +350,7 @@ live_execution_widget = ipywidgets.VBox([
     state_widget
 ])
 
-# display(live_execution_widget)
+##### display(live_execution_widget)
 print("live_execution_widget created")
 
 Training and Evaluation¶ 다음 셀을 실행하여 트레이너를 정의하고 위젯을 실행하여 트레이너를 제어합니다
@@ -358,7 +358,7 @@ Training and Evaluation¶ 다음 셀을 실행하여 트레이너를 정의하�
 BATCH_SIZE = 8
 
 optimizer = torch.optim.Adam(model.parameters())
-# optimizer = torch.optim.SGD(model.parameters(), lr=1e-3, momentum=0.9)
+##### optimizer = torch.optim.SGD(model.parameters(), lr=1e-3, momentum=0.9)
 
 epochs_widget = ipywidgets.IntText(description='epochs', value=1)
 eval_button = ipywidgets.Button(description='evaluate')
@@ -391,28 +391,28 @@ def train_eval(is_training):
             sum_loss = 0.0
             error_count = 0.0
             for images, labels in iter(train_loader):
-                # send data to device
+                ##### send data to device
                 images = images.to(device)
                 labels = labels.to(device)
 
                 if is_training:
-                    # zero gradients of parameters
+                    ##### zero gradients of parameters
                     optimizer.zero_grad()
 
-                # execute model to get outputs
+                ##### execute model to get outputs
                 outputs = model(images)
 
-                # compute loss
+                ##### compute loss
                 loss = F.cross_entropy(outputs, labels)
 
                 if is_training:
-                    # run backpropogation to accumulate gradients
+                    ##### run backpropogation to accumulate gradients
                     loss.backward()
 
-                    # step optimizer to adjust parameters
+                    ##### step optimizer to adjust parameters
                     optimizer.step()
 
-                # increment progress
+                ##### increment progress
                 error_count += len(torch.nonzero(outputs.argmax(1) - labels).flatten())
                 count = len(labels.flatten())
                 i += count
@@ -444,12 +444,12 @@ train_eval_widget = ipywidgets.VBox([
     ipywidgets.HBox([train_button, eval_button])
 ])
 
-# display(train_eval_widget)
+##### display(train_eval_widget)
 print("trainer configured and train_eval_widget created")
 
 Display the Interactive Tool!
 ```
-# Combine all the widgets into one display
+##### Combine all the widgets into one display
 all_widget = ipywidgets.VBox([
     ipywidgets.HBox([data_collection_widget, live_execution_widget]), 
     train_eval_widget,
@@ -462,9 +462,9 @@ Before you go...
 
 카메라 및/또는 노트북 커널을 종료하여 카메라 리소스를 해제합니다.
 ```
-# Attention!  Execute this cell before moving to another notebook
-# The USB camera application only requires that the notebook be reset
-# The CSI camera application requires that the 'camera' object be specifically released
+##### Attention!  Execute this cell before moving to another notebook
+##### The USB camera application only requires that the notebook be reset
+##### The CSI camera application requires that the 'camera' object be specifically released
 
 import os
 import IPython
