@@ -107,6 +107,7 @@ nvgstcapture-1.0 --mode=2 --camsrc=0 --cap-dev-node=0
 sudo apt-get update
 sudo apt-get install fcitx-hangul
 reboot
+
 8. 제슨 알아보고 설치하기
 
 https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide#id-.JetsonNano2GBDeveloperKitUserGuidevbatuu_v1.0-DeveloperKitSetup
