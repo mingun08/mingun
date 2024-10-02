@@ -75,25 +75,27 @@ terminal을 열어줍니다.
 git clone https://github.com/jetsonhacks/USB-Camera.git
 ````
 cd USB-Camera
-`````
+
 ls
-`````
+
 python3 usb-camera-gst.py
-`````
+
 python3  face-detect-usb.py
-`````
+
 nvgstcapture-1.0 --mode=1 --camsrc=0 --cap-dev-node=0
-`````
+
 j
 https://drive.google.com/file/d/1L6HZxEdtBkHJP4knfZh81MvpnHe0Webj/view?usp=sharing
-`````
+
 nvgstcapture-1.0 --mode=2 --camsrc=0 --cap-dev-node=0
 1
 0
+````
 이곳에 사진 넣고 영상 넣을 것 참고 링크 https://ndb796.tistory.com/557
 7. 한글 설치 , reboot 한 후 오른쪽 하단 키보드 모양을 오른쪽 마우스 클릭→ configure click
-
+````
 참고 링크 https://driz2le.tistory.com/253
+````
 sudo apt-get update
 sudo apt-get install fcitx-hangul
 reboot
@@ -102,7 +104,7 @@ reboot
 https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide#id-.JetsonNano2GBDeveloperKitUserGuidevbatuu_v1.0-DeveloperKitSetup
 
 9. image classification 준비
-
+````
 dli@dli-desktop:~$ mkdir -p ~/nvdli-data
 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 >     --memory=500M --memory-swap=4G \
@@ -110,15 +112,16 @@ dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
 >     --volume /tmp/argus_socket:/tmp/argus_socket \
 >     --device /dev/video0 \
 >     nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
-> 결과
-> ![372466618-634eaeeb-1a8f-4bff-a953-55663eef1c7e](https://github.com/user-attachments/assets/b030b812-7c38-4487-a97e-d49beac2b3ce)
-> 카메라 없어서 생기는 에러로 카메라 연결하고 다시 명령한다 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
-
+ 결과
+ ![372466618-634eaeeb-1a8f-4bff-a953-55663eef1c7e](https://github.com/user-attachments/assets/b030b812-7c38-4487-a97e-d49beac2b3ce)
+ 카메라 없어서 생기는 에러로 카메라 연결하고 다시 명령한다 dli@dli-desktop:~$ sudo docker run --runtime nvidia -it --rm --network host \
+````
 --memory=500M --memory-swap=4G \
 --volume ~/nvdli-data:/nvdli-nano/data \
 --volume /tmp/argus_socket:/tmp/argus_socket \
 --device /dev/video0 \
 nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr
+
 결과에 다음과 같은 글이 써진다. allow 10 sec for JupyterLab to start @ http://192.168.0.152:8888 (password dlinano) JupterLab logging location: /var/log/jupyter.log (inside the container) root@dli-desktop:/nvdli-nano# 웹브라우저를 열고 192.168.0.152:8888 를 친다
 결과
 ![372469166-645f81ca-8fb1-49b9-ae38-d118c5e07eb3](https://github.com/user-attachments/assets/70043bad-90da-4c0d-9766-58f4f63d5d77)
